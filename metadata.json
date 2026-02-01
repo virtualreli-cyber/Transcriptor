@@ -1,0 +1,7 @@
+{
+  "name": "AudioScribe & Share",
+  "description": "A minimalist, mobile-first app to record audio, transcribe it using Gemini AI, and share the results via WhatsApp.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
