@@ -7,13 +7,7 @@
     <title>AudioScribe - Transcripción Pro</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <script type="importmap">
-    {
-      "imports": {
-        "@google/genai": "https://esm.sh/@google/genai@^1.38.0"
-      }
-    }
-    </script>
+
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -328,7 +322,8 @@
                 });
 
                 if (!response.ok) {
-                    throw new Error(`Server error: ${response.status}`);
+                    const errorData = await response.json().catch(() => ({}));
+                    throw new Error(errorData.error || `Server error: ${response.status}`);
                 }
 
                 const data = await response.json();
@@ -341,7 +336,7 @@
 
             } catch (err) {
                 console.error(err);
-                showToast("Error en la transcripción. Verifica tu conexión.", false);
+                showToast(`Error: ${err.message || "Verifica tu conexión."}`, false);
                 switchView('idle');
             }
         }
