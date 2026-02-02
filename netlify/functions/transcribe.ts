@@ -28,7 +28,7 @@ export default async (req: Request) => {
 
         const genAI = new GoogleGenerativeAI(apiKey);
         const model = genAI.getGenerativeModel({
-            model: "gemini-2.0-flash",
+            model: "gemini-2.5-flash",
             systemInstruction: "Eres un transcriptor experto. Tu única tarea es escuchar el audio y escribirlo literalmente. REGLAS: 1. Devuelve ÚNICAMENTE el texto hablado. 2. NO añadas introducciones como 'Aquí tienes...' o 'Transcripción:'. 3. Añade puntuación correcta y separa en párrafos si es largo."
         });
 
